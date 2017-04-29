@@ -4,8 +4,13 @@ designed to work on systems with as few assumptions as possible. That means that
 installed.
 
 ## Installing
-Checkout these configs is as simple as cloning this project and running 'install.sh'. Sim links will be created to the
+Checkout these configs is as simple as cloning this project and running 'install.sh'. Symlinks will be created to the
 projects directory. This means that if the project is updated, the config files will be automatically updated too.
+
+	install.sh [skip|force]
+
+skip indicates that existing dotfiles should remain unchanged, where force will remove any existing files before
+creating the symlink.
 
 ## Vim
 - line and relative numbers
@@ -20,5 +25,11 @@ projects directory. This means that if the project is updated, the config files 
 - Tag jumping
 - Map Fx keys to build, saving, etc
 
+## tmux
+- replace ctl-b binding with ctl-a
+- Resize pane with hjkl
+- switch panes with arrow keys
+- Switch panes with alt-hjkl
+- prev/next window with shift-left/right arrow
 
 
