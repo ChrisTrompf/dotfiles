@@ -6,6 +6,7 @@ ME="$(basename "$(test -L "$0" && readlink "$0" || echo "$0")")"
 FILES=( \
 	vimrc \
 	tmux.conf \
+	gitconfig \
 	)
 
 # force overwrites any existing file. Skip leaves existing files unchanged

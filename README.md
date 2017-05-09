@@ -32,4 +32,9 @@ creating the symlink.
 - Switch panes with alt-hjkl
 - prev/next window with shift-left/right arrow
 
+## git
+- User name and email address
+- vim as editor
+- colour enabled
+- vimdiff as diff tool
 
