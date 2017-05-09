@@ -80,16 +80,8 @@ let g:netrw_liststyle=3		" Tree view
 " :edit a folder to open a file browser
 " <CR>/v/t To open in h-split/v-split/tab
 
-" VIM Configuration File
-" Description: Optimized for C/C++ development, but useful also for other things.
-" Author: Gerhard Gappmeier
-"
-
-" configure tabwidth and insert spaces instead of tabs
 " wrap lines at 120 chars. 80 is somewhat antiquated with nowadays displays.
-set textwidth=120
-" turn syntax highlighting on
-" colorscheme wombat256
+set colorcolumn=120
 " intelligent comments
 set comments=sl:/*,mb:\ *,elx:\ */
 
