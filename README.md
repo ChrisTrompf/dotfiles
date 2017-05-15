@@ -27,6 +27,7 @@ creating the symlink.
 
 ## tmux
 - replace ctl-b binding with ctl-a
+- Set escape time to 0 to ensure ESC key works as expected
 - Resize pane with hjkl
 - switch panes with arrow keys
 - Switch panes with alt-hjkl
