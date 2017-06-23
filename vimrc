@@ -26,7 +26,10 @@ set showmatch
 syntax enable
 filetype plugin on
 set t_Co=256
-colorscheme peachpuff
+colorscheme desert
+
+" Make from build path
+set makeprg=make\ -j20\ --directory=./build/
 
 " *** Finding files ***
 
@@ -75,7 +78,15 @@ let g:netrw_altv=1			" Open splits to the right
 let g:netrw_liststyle=3		" Tree view
 " let g:netrw_list_hide=netrw_gitignore#Hide()
 " let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
-
+" Mapping q to close netrw is easily solved
+autocmd FileType netrw nnoremap q :bd<CR>
+" Open up explorer window to be 25% 
+let g:netrw_winsize = 25
+" Netrw behave like nerdtree
+augroup ProjectDrawer
+  autocmd!
+    autocmd VimEnter * :Vexplore
+augroup END
 
 " :edit a folder to open a file browser
 " <CR>/v/t To open in h-split/v-split/tab
