@@ -52,11 +52,16 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'ascenator/L9', {'name': 'newL9'}
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'vimwiki/vimwiki'
-
+Plugin 'scrooloose/nerdtree'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" Make nerdtree open automatically if no file is specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -69,6 +74,13 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+" *** vimwiki ***
+let g:vimwiki_list = [
+	\{'path': '~/docs/vimwiki/personal.wiki', 'path_html': '~/docs/vimwiki/personal.html', 'syntax' : 'markdown', 'ext' : '.md', 'custom_wiki2html' : '~/bin/md2html.py' },
+	\{'path': '~/docs/vimwiki/programming.wiki', 'path_html': '~/docs/vimwiki/programming.html', 'syntax' : 'markdown', 'ext' : '.md', 'custom_wiki2html' : '~/bin/md2html.py' },
+	\{'path': '~/docs/vimwiki/linux.wiki', 'path_html': '~/docs/vimwiki/linux.html', 'syntax' : 'markdown', 'ext' : '.md', 'custom_wiki2html' : '~/bin/md2html.py' }
+	\]
 
 
 " Color scheme
@@ -117,23 +129,23 @@ command! MakeTags !ctags -R .
 
 
 " *** File Browsing ***
-filetype plugin on
-
-let g:netrw_banner=0		" Remove banner
-let g:netrw_browse_split=4	" Open in prior window
-let g:netrw_altv=1			" Open splits to the right
-let g:netrw_liststyle=3		" Tree view
-" let g:netrw_list_hide=netrw_gitignore#Hide()
-" let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
-" Mapping q to close netrw is easily solved
-autocmd FileType netrw nnoremap q :bd<CR>
-" Open up explorer window to be 25% 
-let g:netrw_winsize = 25
-" Netrw behave like nerdtree
-augroup ProjectDrawer
-  autocmd!
-    autocmd VimEnter * :Vexplore
-augroup END
+" filetype plugin on
+" 
+" let g:netrw_banner=0		" Remove banner
+" let g:netrw_browse_split=4	" Open in prior window
+" let g:netrw_altv=1			" Open splits to the right
+" let g:netrw_liststyle=3		" Tree view
+" " let g:netrw_list_hide=netrw_gitignore#Hide()
+" " let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+" " Mapping q to close netrw is easily solved
+" autocmd FileType netrw nnoremap q :bd<CR>
+" " Open up explorer window to be 25% 
+" let g:netrw_winsize = 25
+" " Netrw behave like nerdtree
+" augroup ProjectDrawer
+"   autocmd!
+"     autocmd VimEnter * :Vexplore
+" augroup END
 
 " :edit a folder to open a file browser
 " <CR>/v/t To open in h-split/v-split/tab
@@ -142,10 +154,6 @@ augroup END
 set colorcolumn=120
 " intelligent comments
 set comments=sl:/*,mb:\ *,elx:\ */
-
-" Install OmniCppComplete like described on http://vim.wikia.com/wiki/C++_code_completion
-" This offers intelligent C++ completion when typing ‘.’ ‘->’ or <C-o>
-" Load standard tag files
 
 " *** Enhanced keyboard mappings *** 
 "
