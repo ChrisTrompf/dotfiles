@@ -52,6 +52,7 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'ascenator/L9', {'name': 'newL9'}
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'vimwiki/vimwiki'
+Plugin 'mattn/calendar-vim'
 Plugin 'scrooloose/nerdtree'
 
 " All of your Plugins must be added before the following line
@@ -85,7 +86,7 @@ let g:vimwiki_list = [
 
 " Color scheme
 set t_Co=256
-colorscheme peachpuff
+colorscheme torte
 
 " Make from build path
 set makeprg=make\ -j20\ --directory=./build/
