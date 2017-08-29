@@ -9,6 +9,14 @@ FILES=( \
 	gitconfig \
 	)
 
+SRC_DIRECTORIES=( \
+	vimrc_filetypes \
+	)
+
+DST_DIRECTORIES=( \
+	~/.vim/ftplugin \
+	)
+
 # force overwrites any existing file. Skip leaves existing files unchanged
 MODES=(force skip)
 MODE=0
@@ -37,33 +45,37 @@ function load_parameters {
 	fi
 	}
 
-# Function create a symlink in the home folder, pointing to the passed filenme
-# eg install_link "!/dotfiles " "vimcr" --> ln -s ~/dotfiles/vimrc ~/.vimrc
+# Function create a symlink in the home folder, pointing to the passed filename
+# eg install_link "~/dotfiles " "vimcr" --> ln -s ~/dotfiles/vimrc ~/.vimrc
 function install_link {
 	# Get the source dir
 	DIR_NAME=$1
-	# Get the filename from the the full path
+	# Get the filename from the full path
 	FILE_NAME=$2
 	FULL_NAME="$1/$2"
-	# Generate a dotfile name
-	DOT_FILE=~/.${FILE_NAME}
-	echo "Creating symlink '$DOT_FILE' for '$FULL_NAME'"
+	if [ -z "$3" ]; then
+		DST_FILE="~/.${FILE_NAME}"
+	else
+		DST_FILE=$3
+	fi
+
+	echo "Creating symlink '$DST_FILE' for '$FULL_NAME'"
 	if ! [[ -e "$FULL_NAME" ]]; then
 		echo "Source file doesn't exist. Skipping"
 		exit
 	fi
-	if [[ -e "${DOT_FILE}" ]]; then
+	if [[ -e "${DST_FILE}" ]]; then
 		# Check if forcing overwrite
 		if [[ ${MODE} -eq 1 ]]; then
-			echo "Removing file '$DOT_FILE'"
-			rm "$DOT_FILE"
+			echo "Removing file '$DST_FILE'"
+			rm "$DST_FILE"
 		else
-			echo "${DOT_FILE} exists. Skipping"
+			echo "${DST_FILE} exists. Skipping"
 			return
 		fi
 	fi
 
-	ln -s ${FULL_NAME} ${DOT_FILE}
+	ln -s ${FULL_NAME} ${DST_FILE}
 	}
 
 
@@ -71,6 +83,14 @@ load_parameters $@
 
 for FILE in "${FILES[@]}"; do
 	install_link $DIR $FILE
+done
+
+DIR_LEN=${#SRC_DIRECTORIES[@]}
+echo ${DIR_LEN}
+for (( i=0; i<${DIR_LEN}; i++ ));
+do
+	install_link ${DIR} ${SRC_DIRECTORIES[$i]} ${DST_DIRECTORIES[$i]}
+	echo "${SRC_DIRECTORIES[$i]} --> ${DST_DIRECTORIES[$1]}"
 done
 
 exit 0
