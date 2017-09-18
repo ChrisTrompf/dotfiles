@@ -62,6 +62,9 @@
 	Plugin 'vimwiki/vimwiki'
 	Plugin 'scrooloose/nerdtree'
 
+	" Show git status in nerdtree 
+	Plugin 'Xuyuanp/nerdtree-git-plugin'
+
 	" Support CMake
 	Plugin 'vhdirk/vim-cmake'
 
@@ -73,6 +76,15 @@
 	" Make nerdtree open automatically if no file is specified
 	autocmd StdinReadPre * let s:std_in=1
 	autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+	" Open nerd tree 
+	nnoremap <Leader>f :NERDTreeToggle<Enter>
+
+	" Close nerd tree when opening a file
+	let NERDTreeQuitOnOpen = 1
+
+	" Automatically close nerd tree if it's the last remaining window
+	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " vimwiki
 	let g:vimwiki_list = [
