@@ -32,6 +32,14 @@
 	" Enable syntax and plugins
 	syntax enable
 
+" Make relative numbers turn on and off as the window leaves focus or when in
+" insert mode
+	:augroup numbertoggle
+	:  autocmd!
+	:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+	:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+	:augroup END
+
 " Vundle stuffs - https://github.com/VundleVim/Vundle.vim
 	filetype off
 	" set the runtime path to include Vundle and initialize
