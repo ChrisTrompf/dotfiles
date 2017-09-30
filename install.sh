@@ -54,7 +54,7 @@ function install_link {
 	FILE_NAME=$2
 	FULL_NAME="$1/$2"
 	if [ -z "$3" ]; then
-		DST_FILE="~/.${FILE_NAME}"
+		DST_FILE="${HOME}/.${FILE_NAME}"
 	else
 		DST_FILE=$3
 	fi
@@ -85,8 +85,9 @@ for FILE in "${FILES[@]}"; do
 	install_link $DIR $FILE
 done
 
+echo
+echo Installing folders
 DIR_LEN=${#SRC_DIRECTORIES[@]}
-echo ${DIR_LEN}
 for (( i=0; i<${DIR_LEN}; i++ ));
 do
 	install_link ${DIR} ${SRC_DIRECTORIES[$i]} ${DST_DIRECTORIES[$i]}
