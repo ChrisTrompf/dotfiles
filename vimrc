@@ -10,6 +10,7 @@
 	set cursorline		" Highlight the line the cursor is on
 
 	" Searching
+	set ignorecase		" Default to case insensitive searching, smartcase will this when searching for a string containing up-case
 	set smartcase		" Insensitive search unless there is an upper 
 	set hlsearch		" Highlight search matches
 	set incsearch		" Show matching searches as you type
