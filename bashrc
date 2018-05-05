@@ -1,6 +1,11 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
+
+PATH="$PATH;~/bin"
 
 # Don't put duplicate lines in the history. See bash(1) for more options.
 HISTCONTROL=ignoredups:ignorespace
@@ -20,6 +25,10 @@ shopt -s checkwinsize
 
 # Set cursor type to solid vertical bar.
 echo -ne '\e[6 q'
+
+source ~/bin/colours.sh
+
+CLEAR_EOL="\033[K"
 
 # Set the prompt.
 function prompt_command() {
@@ -82,13 +91,13 @@ function prompt_command() {
     function prompt_left() {
         printf "\
 $base01bg$base06\\\\u@\h$base05:$base0D\w/\
-$base0E$git\
+$base0E $GIT_PROMPT \
 $base0B$virtualenv\
 $base0F$nodevirtualenv\
 $base0C$ssh\
 $CLEAR_EOL$reset\
 "
-    }
+}
 
     # Prompt line with dollar sign.
     # We have to escape color codes so readline can correctly determine line length.
@@ -101,7 +110,12 @@ $CLEAR_EOL$reset\
     # Write history after every command.
     history -a
 }
-PROMPT_COMMAND=prompt_command
+
+if [ -f ~/projects/ext/bash-git-prompt/gitprompt.sh ]; then
+  source ~/projects/ext/bash-git-prompt/gitprompt.sh
+else
+  PROMPT_COMMAND=prompt_command
+fi
 
 # Enable git command line completion in bash.
 if [ -f ~/.git-completion.bash ]; then
@@ -111,6 +125,6 @@ fi
 ## Aliases
 alias mv='mv --interactive'
 alias cp='cp --interactive'
-
-
+alias ls='ls --color=always'
+alias grep='grep --color=auto'
 

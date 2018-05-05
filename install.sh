@@ -13,10 +13,12 @@ FILES=( \
 
 SRC_DIRECTORIES=( \
 	vimrc_filetypes \
+  bin \
 	)
 
 DST_DIRECTORIES=( \
 	~/.vim/ftplugin \
+  ~/bin \
 	)
 
 # force overwrites any existing file. Skip leaves existing files unchanged
