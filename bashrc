@@ -28,7 +28,8 @@ export HISTIGNORE=" *"
 shopt -s checkwinsize
 
 # Set cursor type to solid vertical bar.
-echo -ne '\e[6 q'
+# This seems to cause issues when gnome terminal loses scope 
+# echo -ne '\e[6 q'
 
 source ~/bin/colours.sh
 
