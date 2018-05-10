@@ -5,8 +5,6 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-PATH="$PATH;~/bin"
-
 # Don't put duplicate lines in the history. See bash(1) for more options.
 HISTCONTROL=ignoredups:ignorespace
 
@@ -127,4 +125,5 @@ alias mv='mv --interactive'
 alias cp='cp --interactive'
 alias ls='ls --color=always'
 alias grep='grep --color=auto'
+alias vi='vim'
 
