@@ -5,6 +5,12 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+# Add ssh-agent of not already running
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+    eval `ssh-agent -s`
+    ~/bin/load_keys.sh
+fi
+
 # Don't put duplicate lines in the history. See bash(1) for more options.
 HISTCONTROL=ignoredups:ignorespace
 
