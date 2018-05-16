@@ -1,9 +1,11 @@
 [user]
 	name = Chris Trompf
 	email = chris.trompf@gmail.com
+  username = ChrisTrompf
 
 [core]
 	editor = vim
+	difftool = vimdiff
 
 [color]
 	ui = auto
