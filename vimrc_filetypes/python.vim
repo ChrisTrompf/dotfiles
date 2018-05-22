@@ -9,3 +9,7 @@
 	setlocal ruler
 	setlocal autoindent
 
+	autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+	highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+	" Show trailing whitespace and spaces before a tab:
+	:match ExtraWhitespace /\s\+$\| \+\ze\t/
