@@ -32,7 +32,7 @@
 
 " Show special characters
 	set list
-	set listchars=eol:¬,tab:‣\ ,precedes:«,extends:»,trail:·
+	set listchars=eol:¬,tab:\ \ ,precedes:«,extends:»,trail:·
 
 	" Enable syntax and plugins
 	syntax enable
@@ -85,6 +85,11 @@
 	Plugin 'SirVer/ultisnips'
 	Plugin 'honza/vim-snippets'
 	Plugin 'altercation/solarized'
+	Plugin 'dhruvasagar/vim-table-mode'
+	Plugin 'tpope/vim-surround'
+	Plugin 'michaeljsmith/vim-indent-object'
+	Plugin 'vim-scripts/argtextobj.vim'
+	Plugin 'airblade/vim-gitgutter'
 
 	" make YCM compatible with UltiSnips (using supertab)
 	let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -96,6 +101,9 @@
 	let g:UltiSnipsJumpForwardTrigger = "<tab>"
 	let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
+	" Use markdown format for tables
+	let g:table_mode_corner='|'
+
 	" Show git status in nerdtree 
 	Plugin 'Xuyuanp/nerdtree-git-plugin'
 
@@ -105,6 +113,7 @@
 	" All of your Plugins must be added before the following line
 	call vundle#end()						" required
 	filetype plugin indent on		" required
+
 
 " Nerdtree
 	" Make nerdtree open automatically if no file is specified
@@ -169,6 +178,10 @@ command! MakeTags !ctags -R .
 
 " intelligent comments
 set comments=sl:/*,mb:\ *,elx:\ */
+
+" Windows resize
+	nnoremap <C-w>M <C-w>\|<C-w>_
+	nnoremap <C-w>m <C-w>=
 
 " Enhanced keyboard mappings *** 
 	" in normal mode F2 will save the file
