@@ -5,7 +5,7 @@ ME="$(basename "$(test -L "$0" && readlink "$0" || echo "$0")")"
 
 # Dotfiles that will get installed in ~/
 FILES=( \
-	bashrc \
+	bashrc_src \
 	vimrc \
 	tmux.conf \
 	gitconfig \

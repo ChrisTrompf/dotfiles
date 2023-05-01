@@ -30,3 +30,7 @@
 	
 	map <buffer> <F9> :YcmCompleter FixIt<CR>
 
+	" Folding
+	setlocal foldmethod=syntax
+	setlocal foldnestmax=3
+
