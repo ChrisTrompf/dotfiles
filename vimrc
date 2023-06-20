@@ -107,7 +107,7 @@ nnoremap <silent> <Space>/ :nohlsearch<Bar>:echo<CR>
 
 	" Add support for plantuml-syntax
 	Plugin 'aklt/plantuml-syntax'
-	
+
 	" Add support for showing tags on a bar using :TagbarToggle
 	Plugin 'majutsushi/tagbar'
 
@@ -133,6 +133,7 @@ nnoremap <silent> <Space>/ :nohlsearch<Bar>:echo<CR>
 
 	" fzf for fuzzy searching
 	Plugin 'junegunn/fzf'
+
 	" Ripgrep
 	Plugin 'BurntSushi/ripgrep'
 	" Silver searcher
@@ -140,11 +141,11 @@ nnoremap <silent> <Space>/ :nohlsearch<Bar>:echo<CR>
 	" rainbow brackets
 	Plugin 'junegunn/rainbow_parentheses.vim'
 
-	" make YCM compatible with UltiSnips (using supertab)
+	" Change autocomplete from <C-y> to <tab>
 	" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 	" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-	" let g:SuperTabDefaultCompletionType = '<C-n>'
-
+	let g:SuperTabDefaultCompletionType = "context"
+ 
 " COC
 	" Use <c-space> to trigger completion
 	if has('nvim')
